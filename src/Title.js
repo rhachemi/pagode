@@ -10,7 +10,6 @@ function Title() {
     
     <div className="Title">
       <h1>PAGODE</h1>
-      
      <div className="Title-subtitle">Histoire et patrimoine du GODF</div>
      </div>
   )
