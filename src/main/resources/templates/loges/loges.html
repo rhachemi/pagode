@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+
+<body>
+	<div layout:fragment="content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa-bars"></i> Loges</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="/index">Accueil</a></li>
+						<li><i class="fa fa-bars"></i><a href="/loges">Accueil Loges</a></li>
+						<li><i class="fa fa-square-o"></i>Liste des Loges</li>
+					</ol>
+				</div>
+			</div>
+			<section class="panel border-top">
+				<div class="row">
+					<div class="col-lg-12">
+						<section class="panel" style="margin-bottom: 0px;">
+							<div class="panel-body">
+								<a th:href="@{/loges/logeAdd}" class="btn btn-primary">
+									Ajouter une Loge
+								</a>
+							</div>
+						</section>
+
+						<section class="panel">
+							<header class="panel-heading">
+								Loge
+								<!-- Première modale pour afficher la miniature du document -->
+						 
+							</header>
+							 
+
+							<table class="table table-striped table-advance table-hover">
+								<tbody>
+									<tr>
+										 
+										<th  >Nom</th>
+										<th  >Description</th>
+										<th  >Date de création</th>	 
+										<th>Action</th>
+									</tr>
+									<tr th:each="loge:${loges}">
+										<td class="text-left" th:text="${loge.nom}">Nom</td>
+										<td class="text-left" th:text="${loge.description}">Description</td>
+										<td class="text-left" th:text="${loge.creationDate}">Date de création</td>
+										<td>
+											<div class="btn-group">
+												<a class="btn btn-primary" id="editButton"
+													th:href="@{'/loges/loge/Edit/'+${loge.id}}"><i
+														class="fa fa-pencil-alt"></i></a>
+												<a class="btn btn-success" id="detailsButton"
+													th:href="@{'/loges/loge/Details/'+${loge.id}}"><i
+														class="fa fa-file-alt"></i></a>
+												<a class="btn btn-danger" id="deleteButton"
+													onclick="  confirm('Are you sure you want to delete this record?')"
+													th:href="@{'/loges/loge/delete/'+${loge.id}}"><i
+														class="fa fa-times"></i></a>
+											</div>
+										</td>
+									</tr-->
+								</tbody>
+							</table>
+ 
+
+						</section>
+					</div>
+				</div>
+				<!--Content of the page-->
+			</section>
+	</div>
+
+	<!-- Script JavaScript pour gérer les modales -->
+
+	<th:block layout:fragment="script">
+		<script language="JavaScript">
+			$('document').ready(function () {
+
+				// Gestion de la deuxième modale pour afficher le document PDF
+				$('.table button[data-target="#documentModal"]').on('click', function () {
+					var documentUrl = $(this).data('src');
+					var pdfViewer = document.getElementById('documentViewer');
+					PDFJS.getDocument(documentUrl).then(function (pdf) {
+						pdf.getPage(1).then(function (page) {
+							var scale = 1.5;
+							var viewport = page.getViewport({scale: scale});
+							var canvas = document.createElement('canvas');
+							var context = canvas.getContext('2d');
+							canvas.height = viewport.height;
+							canvas.width = viewport.width;
+							var renderContext = {
+								canvasContext: context,
+								viewport: viewport
+							};
+							pdfViewer.innerHTML = '';
+							pdfViewer.appendChild(canvas);
+							page.render(renderContext);
+						});
+					});
+				});
+				// Gestion de la première modale pour afficher la miniature du document
+				$('.table button[data-target="#documentThumbnailModal"]').on('click', function () {
+					var documentThumbnailUrl = $(this).data('src');
+					$('#documentThumbnailModal #logeDocument').attr('src', documentThumbnailUrl);
+				});
+
+				// Gestion de la deuxième modale pour afficher le document complet
+				$('.table button[data-target="#documentModal"]').on('click', function () {
+					var documentUrl = $(this).data('src');
+					$('#documentModal #documentViewer').attr('src', documentUrl);
+				});
+			});
+		</script>
+	</th:block>
+
+</body>
+
+</html>

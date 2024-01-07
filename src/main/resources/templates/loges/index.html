@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+
+<body>
+
+	<div layout:fragment="content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa fa-bars"></i>Accueil de la gestion du référentiel des loges
+					</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="/index">Accueil</a></li>
+						<li><i class="fa fa-bars"></i><a href="/loges">Accueil gestion des loges</a></li>
+						<li><i class="fa fa-square-o"></i>Accueil</li>
+					</ol>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4">
+					<section class="panel">
+						<div class="panel-body">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">
+										<h3><b>Loges</b></h3>
+									</h5>
+									<p class="card-text">Gestion du référentiel des loges</p>
+									<a href="/loges/loges" class="btn btn-primary">Accés au référentiel des loges</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+
+				<div class="col-lg-4">
+					<section class="panel">
+						<div class="panel-body">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">
+										<h3><b>Obediences</b></h3>
+									</h5>
+									<p class="card-text">Référentiel des obédiences.</p>
+									<a href="/loges/logeObediences" class="btn btn-primary">Accès au référentiel des
+										Obediences</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<section class="panel">
+						<div class="panel-body">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">
+										<h3><b>Types de Loge</b></h3>
+									</h5>
+									<p class="card-text">Explorez et gérez les différents types de loges disponibles dans notre système.</p>
+									<a href="/loges/logeTypes" class="btn btn-primary">Accès au référentiel des types de loges</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="col-lg-4">
+					<section class="panel">
+						<div class="panel-body">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">
+										<h3><b>Référentiel de statut</b></h3>
+									</h5>
+									<p class="card-text">Découvrez et administrez les divers statuts attribués aux loges dans notre système..</p>
+									<a href="/loges/logeStatuts" class="btn btn-primary">Accès au référentiel des statuts</a>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+
+		</section>
+	</div>
+
+</body>
+
+</html>

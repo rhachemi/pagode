@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-bars"></i> PAGE D'ACCUEIL DE LA GESTION DES ARCHIVES</h3>
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home"></i><a href="/index">Accueil</a></li>
+                    <li><i class="fa fa-bars"></i>Accueil Archives</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Gestion des Archives</b></h3></h5>
+                                <p class="card-text">Liste des archives identifiées et enregistrées dans la base de données.</p>
+                                <a href="/archives/archives" class="btn btn-primary">Accès à la base de données des documents d'archives</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Documents numériques</b></h3></h5>
+                                <p class="card-text">Téléversement desdocuments d'archives.</p>
+                                <a href="/archives/archiveDocuments" class="btn btn-primary">Accès au téléversement des archives</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Gestion des types</b></h3></h5>
+                                <p class="card-text">Valeurs : Lettre, Carte, Photographie, Journal, Article de presse, etc.</p>
+                                <a href="/archives/archiveTypes" class="btn btn-primary">Accès à la gestion des types</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Gestion des sources</b></h3></h5>
+                                <p class="card-text">Valeurs : Nom de la bibliothèque, musée, archive, etc.</p>
+                                <a href="/archives/archiveSources" class="btn btn-primary">Accès à la gestion des sources</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Gestion des themes</b></h3></h5>
+                                <p class="card-text">Valeurs : Politique, Culture, Économie, Société, Science, etc.</p>
+                                <a href="/archives/archiveThemes" class="btn btn-primary">Accès à la gestion des thèmes</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Gestion des formats</b></h3></h5>
+                                <p class="card-text">Valeurs : Papier, Électronique, Audio, Vidéo, etc.</p>
+                                <a href="/archives/archiveFormats" class="btn btn-primary">Accès à la gestion des formats</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Relations avec l'histoire nationale</b></h3></h5>
+                                <p class="card-text">Implications de la franc-maçonnerie dans des événements historiques en France.</p>
+                                <a href="/archives/archiveHistoires" class="btn btn-primary">Accès à la gestion des références historiques</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><h3><b>Gestion des statuts de conservation</b></h3></h5>
+                                <p class="card-text">Valeurs : Bon, Endommagé, Restauré, etc.</p>
+                                <a href="/archives/archiveStatuts" class="btn btn-primary">Accès à la gestion du statut de conservation</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

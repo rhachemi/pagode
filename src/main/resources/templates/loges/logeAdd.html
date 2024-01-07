@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Faites une requête AJAX pour obtenir les villes de Loire-Atlantique avec la population > 1000
+        $.ajax({
+            url: 'https://api-adresse.data.gouv.fr/search/?q=&limit=1000&type=municipality&department=44',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // Mettez à jour les options du menu déroulant avec les villes obtenues
+                console.log('Script chargé');
+                var select = $('select[name="logelocationid"]');
+                select.empty();
+                select.append('<option value="">-SELECT-</option>');
+                data.features.forEach(function (feature) {
+                    var cityName = feature.properties.city;
+                    var population = feature.properties.population;
+                    // Ajoutez l'option uniquement si la population est > 1000
+                    if (population > 1000) {
+                        select.append('<option value="' + cityName + '">' + cityName + '</option>');
+                    }
+                    console.log('Données récupérées :', data);
+                });
+            },
+            error: function (error) {
+                console.error('Erreur lors de la récupération des données de la ville:', error);
+            }
+        });
+    });
+</script>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa fa-bars"></i> Ajouter une Loge</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="/loges">Accueil Gestion des loges</a></li>
+						<li><i class="fa fa-bars"></i><a href="/loges/loges">Liste des Loges</a></li>
+						<li><i class="fa fa-square-o"></i>Ajouter une Loge</li>
+					</ol>
+				</div>
+			</div>
+			<div class="container" style="width: 70%">
+				<form class="form-horizontal" th:action="@{/loges/loges}" th:object="${loge}" method="post">
+					<div class="row justify-content-center white-bg">
+						<section class="panel">
+							<header class="panel-heading">
+								Enregistrer une nouvelle loge
+							</header>
+							<br>
+							<div class="col-lg-6">
+								<section class="panel">
+									<div class="form-group row">
+										<label for="ddlTitleEdit" class="col-sm-4 col-form-label">Obedience de
+											rattachement: </label>
+										<div class="col-sm-6">
+											<select class="form-control" name="logeobedienceid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="logeObedience : ${logeObedience}"
+													th:value="${logeObedience.id}"
+													th:text="${logeObedience.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="txtInitialsEdit" class="col-sm-4 col-form-label">Nom : </label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" id="txtNomEdit" name="nom"
+												placeholder="Nom de la loge">
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Localisation</label>
+										<div class="col-sm-6">
+											<select class="form-control" name="logelocationid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="logeLocation : ${logeLocation}"
+													th:value="${logeLocation.id}" th:text="${logeLocation.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Type de loge : </label>
+										<div class="col-sm-6">
+											<select class="form-control" name="logetypeid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="logeType : ${logeType}" th:value="${logeType.id}"
+													th:text="${logeType.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Statut de la loge : </label>
+										<div class="col-sm-6">
+											<select class="form-control" name="logestatutid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="logeStatut : ${logeStatut}" th:value="${logeStatut.id}"
+													th:text="${logeStatut.description}">
+												</option>
+											</select>
+										</div>
+  
+								</section>
+							</div>
+							<div class="col-lg-6">
+								<section class="panel">
+									<div class="form-group row">
+										<label for="txtDateOfBirthEdit" class="col-sm-4 col-form-label">Date de création
+											:</label>
+										<div class="col-sm-6">
+											<input type="date" class="form-control" id="txtDateOfBirthEdit"
+												name="creationDate" placeholder="Date de création">
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label for="txtSSNEdit" class="col-sm-4 col-form-label">Description
+											: </label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" id="txtdescriptionEdit"
+												name="description" placeholder="Description">
+										</div>
+									</div>
+									 
+									 
+									 
+									 
+								</section>
+							</div>
+						</section>
+					</div>
+					<br>
+					<div class="row white-bg">
+						<div class="panel-body">
+							<button type="submit" class="btn btn-primary">
+								Save
+							</button>
+							<a href="/loges/loges" class="btn  btn-warning">
+								Exit
+							</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+
+
+</body>
+
+</html>

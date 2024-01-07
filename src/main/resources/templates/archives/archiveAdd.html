@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+
+<body>
+	<div layout:fragment="content">
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa fa-bars"></i> Ajouter une document d'archive</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="/archives">Accueil</a></li>
+						<li><i class="fa fa-bars"></i><a href="/archives/archives">Liste des Documents d'archive</a>
+						</li>
+						<li><i class="fa fa-square-o"></i>Ajouter un document</li>
+					</ol>
+				</div>
+			</div>
+			<div class="container" style="width: 70%">
+
+				<form class="form-horizontal" th:action="@{/archives/archives}" method="post" th:object="${archive}">
+					<div class="row justify-content-center white-bg">
+						<section class="panel">
+							<header class="panel-heading">
+								Nouvel enregistrement
+							</header>
+							<br>
+							<!-- Ajoutez ceci dans votre formulaire -->
+							<!--input type="hidden" name="archiveuserid" th:value="${loggedInUserId}" /-->
+
+							<div class="col-lg-6">
+								<section class="panel">
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Type de document : </label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archivetypeid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveType : ${archiveTypes}"
+													th:value="${archiveType.id}" th:text="${archiveType.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="txtArchiveNameAdd" class="col-sm-4 col-form-label">Intitutlé du
+											document : </label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" id="txtArchiveTitreAdd" name="titre"
+												placeholder="Intitulé du document">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Source de document : </label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archivesourceid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveSource : ${archiveSource}"
+													th:value="${archiveSource.id}"
+													th:text="${archiveSource.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+
+
+									<div class="form-group row">
+										<label for="txtRegistrationDateAdd" class="col-sm-4 col-form-label">Date
+											enregistrement : </label>
+										<div class="col-sm-6">
+											<input type="date" class="form-control" id="txtRegistrationDateAdd"
+												name="enregistrementDate" placeholder="Date enregistrement">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="txtDescriptionAdd" class="col-sm-4 col-form-label">Description:
+										</label>
+										<div class="col-sm-6">
+											<textarea type="text" class="form-control" id="txtDescriptionAdd"
+												name="description" placeholder="Description" rows="2"></textarea>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="txtAcquisitionDateAdd" class="col-sm-4 col-form-label">Date de
+											production: </label>
+										<div class="col-sm-6">
+											<input type="date" class="form-control" id="txtAcquisitionDateAdd"
+												name="productionDate" placeholder="Date de production">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="ddlArchiveLogeAdd" class="col-sm-4 col-form-label">Loge de référence
+										</label>
+										<div class="col-sm-6">
+											<select class="form-control" id="ddlArchiveLogeAdd" name="archivelogeid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveLoge : ${archiveLoge}"
+													th:value="${archiveLoge.id}" th:text="${archiveLoge.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Localisation</label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archivelocationid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveLocation : ${archiveLocation}"
+													th:value="${archiveLocation.id}"
+													th:text="${archiveLocation.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+
+
+								</section>
+							</div>
+							<div class="col-lg-6">
+								<section class="panel">
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Thème</label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archivethemeid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveThemes : ${archiveTheme}"
+													th:value="${archiveThemes.id}"
+													th:text="${archiveThemes.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Etat</label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archivestatutid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveStatut : ${archiveStatut}"
+													th:value="${archiveStatut.id}"
+													th:text="${archiveStatut.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Format </label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archiveformatid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveFormat : ${archiveFormat}"
+													th:value="${archiveFormat.id}"
+													th:text="${archiveFormat.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Relation avec l'histoire nationale':
+										</label>
+										<div class="col-sm-6">
+											<select class="form-control" id="ddlHistoireAdd" name="archivehistoireid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveHistoire : ${archiveHistoire}"
+													th:value="${archiveHistoire.id}"
+													th:text="${archiveHistoire.description}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="ddlAuteurAdd" class="col-sm-4 col-form-label">Auteur</label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" id="txtArchiveAuteurAdd"
+												name="auteur" placeholder="Auteur du document">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="ddlNombrePagesAdd" class="col-sm-4 col-form-label">Nombre de
+											pages</label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" id="txtArchiveNumberpagesAdd"
+												placeholder="Nombre de pages">
+
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Document</label>
+										<div class="col-sm-6">
+											<select class="form-control" name="archivedocumentid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveDocuments : ${archiveDocument}"
+													th:value="${archiveDocuments.id}"
+													th:text="${archiveDocuments.name}">
+												</option>
+
+											</select>
+										</div>
+									</div>
+
+
+									<div class="form-group row">
+										<label for="ddlArchiveUserAdd" class="col-sm-4 col-form-label">Utilisateur
+										</label>
+										<div class="col-sm-6">
+											<select class="form-control" id="ddlArchiveUserAdd" name="archiveuserid">
+												<option th:value="${null}">-SELECT-</option>
+												<option th:each="archiveUser : ${archiveUser}"
+													th:value="${archiveUser.Id}" th:text="${archiveUser.username}">
+												</option>
+											</select>
+										</div>
+									</div>
+
+
+								</section>
+							</div>
+						</section>
+					</div>
+					<br>
+					<div class="row white-bg">
+						<div class="panel-body">
+							<button type="submit" class="btn btn-primary">
+								Save
+							</button>
+							<a href="/archives" class="btn  btn-warning">
+								Exit
+							</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>
