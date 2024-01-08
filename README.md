@@ -67,12 +67,9 @@ Pour installer et exécuter le projet Pagode localement, suivez les étapes déc
 ## Configuration Requise
 
 - Java JDK 8 ou supérieur
-- Node.js et npm pour le frontend
 - MySQL Server
 
-## Contributions
-
-Nous encourageons les contributions à Pagode. Si vous souhaitez contribuer, veuillez suivre les étapes décrites dans le fichier CONTRIBUTING.md.
+ 
 
 ## Licence
 
