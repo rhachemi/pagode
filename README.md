@@ -6,7 +6,7 @@ Bienvenue dans la documentation du projet Pagode. Pagode est une plateforme de g
 
 ## Présentation du Projet
 
-Pagode s'appuie sur les dernières technologies pour offrir une solution complète de gestion des archives. Le backend est développé en utilisant Spring Boot, tandis que le frontend est construit avec React. Le projet intègre également des fonctionnalités de sécurité et d'accès aux bases de données MySQL.
+Pagode s'appuie sur les dernières technologies pour offrir une solution complète de gestion des archives. Le backend est développé en utilisant Spring Boot, tandis que le frontend est construit avec Thymeleaf pour la gestion des vues. Le projet intègre également des fonctionnalités de sécurité et d'accès aux bases de données MySQL.
 
 ## Fonctionnalités Principales
 
@@ -15,12 +15,12 @@ Pagode s'appuie sur les dernières technologies pour offrir une solution complè
    - Suivi des versions des archives pour une gestion efficace des modifications.
 
 2. **Interface Utilisateur Conviviale :**
-   - Interface utilisateur moderne basée sur React pour une expérience utilisateur optimale.
+   - Interface utilisateur moderne basée sur Thymeleaf pour une expérience utilisateur optimale.
    - Navigation intuitive et conviviale.
 
 3. **Technologies Utilisées :**
    - Backend développé en Spring Boot.
-   - Frontend développé en React.
+   - Frontend construit avec Thymeleaf.
    - Base de données MySQL pour le stockage des archives.
 
 ## Dépendances Principales
@@ -32,10 +32,6 @@ Pagode s'appuie sur les dernières technologies pour offrir une solution complè
 - Thymeleaf pour la gestion des vues
 - Lombok pour la simplification du code Java
 - Spring Security pour la sécurité de l'application
-
-### Frontend
-
-- React
 
 ### Base de Données
 
