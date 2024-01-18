@@ -19,13 +19,13 @@ public class LogeStatutController {
 
     @GetMapping("/loges/logeStatuts")
     public String parameters(Model model){
-        List<LogeStatut> logeStatut = logeStatutService.findAll();
-        model.addAttribute("logeStatut", logeStatut);
+        List<LogeStatut> logeStatuts = logeStatutService.findAll();
+        model.addAttribute("logeStatuts", logeStatuts);
         return "/loges/logeStatuts";
     }
 
     //Get Job Title by id
-    @GetMapping("/loges/logeStatut/{id}")
+    @GetMapping("/loges/logeStatuts/{id}")
     @ResponseBody
     public LogeStatut getById(@PathVariable Integer id){
         return logeStatutService.findById(id).orElse(null);
